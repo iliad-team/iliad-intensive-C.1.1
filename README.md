@@ -1,23 +1,23 @@
 # ML Engineering Foundations
 
-Slides: https://docs.google.com/viewer?url=https://raw.githubusercontent.com/wusche1/Illiad_ML_Engineering/main/lectures/01_a_ml_foundations/output/slides.pdf
+Slides: https://docs.google.com/viewer?url=https://raw.githubusercontent.com/iliad-team/iliad-intensive-C.1.1/main/lectures/01_a_ml_foundations/output/slides.pdf
 
 Exercises:
-1. Pytorch basics: https://colab.research.google.com/github/wusche1/Illiad_ML_Engineering/blob/main/lectures/01_a_ml_foundations/exercises/01_pytorch_basics/notebook.ipynb
-2. Optimizers: https://colab.research.google.com/github/wusche1/Illiad_ML_Engineering/blob/main/lectures/01_a_ml_foundations/exercises/02_optimizers/notebook.ipynb
-3. Architectures: https://colab.research.google.com/github/wusche1/Illiad_ML_Engineering/blob/main/lectures/01_a_ml_foundations/exercises/03_architectures/notebook.ipynb
+1. Pytorch basics: https://colab.research.google.com/github/iliad-team/iliad-intensive-C.1.1/blob/main/lectures/01_a_ml_foundations/exercises/01_pytorch_basics/notebook.ipynb
+2. Optimizers: https://colab.research.google.com/github/iliad-team/iliad-intensive-C.1.1/blob/main/lectures/01_a_ml_foundations/exercises/02_optimizers/notebook.ipynb
+3. Architectures: https://colab.research.google.com/github/iliad-team/iliad-intensive-C.1.1/blob/main/lectures/01_a_ml_foundations/exercises/03_architectures/notebook.ipynb
 4. Tensorflow playground: https://playground.tensorflow.org/
-5. MLP: https://colab.research.google.com/github/wusche1/Illiad_ML_Engineering/blob/main/lectures/01_a_ml_foundations/exercises/04_mlp/notebook.ipynb
-6. Attention: https://colab.research.google.com/github/wusche1/Illiad_ML_Engineering/blob/main/lectures/01_a_ml_foundations/exercises/05_attention/notebook.ipynb
-7. RLHF: https://colab.research.google.com/github/wusche1/Illiad_ML_Engineering/blob/main/lectures/01_a_ml_foundations/exercises/06_rlhf/notebook.ipynb
+5. MLP: https://colab.research.google.com/github/iliad-team/iliad-intensive-C.1.1/blob/main/lectures/01_a_ml_foundations/exercises/04_mlp/notebook.ipynb
+6. Attention: https://colab.research.google.com/github/iliad-team/iliad-intensive-C.1.1/blob/main/lectures/01_a_ml_foundations/exercises/05_attention/notebook.ipynb
+7. RLHF: https://colab.research.google.com/github/iliad-team/iliad-intensive-C.1.1/blob/main/lectures/01_a_ml_foundations/exercises/06_rlhf/notebook.ipynb
 
 Claude Code exercises:
 
 Clone the repository:
 
 ```
-git clone https://github.com/wusche1/ml-research-template.git
-cd ml-research-template
+git clone https://github.com/iliad-team/iliad-intensive-C.1.3.git
+cd iliad-intensive-C.1.3
 ```
 
 Then check out each exercise branch one at a time and complete it:

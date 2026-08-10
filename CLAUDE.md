@@ -77,7 +77,7 @@ Run with: `uv run pytest tests/ -v`
 4. Tag exercise code cells with `exercise_id` and solution markdown cells with `solution_id` in cell metadata
 5. Verify: `uv run pytest tests/ -v` should pick it up automatically
 
-GitHub repo URL pattern for Colab setup cells: `https://raw.githubusercontent.com/wusche1/Illiad_ML_Engineering/main/lectures/XX_name/exercises/YY_name/utils.py`
+GitHub repo URL pattern for Colab setup cells: `https://raw.githubusercontent.com/iliad-team/iliad-intensive-C.1.1/main/lectures/XX_name/exercises/YY_name/utils.py`
 
 ## Build Commands
 
