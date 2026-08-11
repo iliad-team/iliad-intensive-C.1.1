@@ -3,14 +3,19 @@
 lectures/*/output/*
 !lectures/*/output/slides.pdf
 
-# Ignore all PDF files in bib folder
-bib/**/*.pdf
+# Zotero attachments. These patterns are deliberately UNANCHORED (leading
+# **/): a pattern containing a slash is matched relative to this file, so the
+# old `bib/**/*.pdf` only ever covered the top-level bib/. The sync daemon
+# resolves its output dir from its own cwd, so running it from scripts/syncing
+# wrote to scripts/syncing/bib/ — which the anchored pattern could not see, and
+# 16 MB of paper PDFs went in unnoticed. Match bib/ wherever it appears.
+**/bib/**/*.pdf
 
 # Ignore HTML snapshots
-bib/**/*.html
+**/bib/**/*.html
 
 # Ignore Zotero sync log
-bib/.sync_log.txt
+**/bib/.sync_log.txt
 
 # ignore embeddings
 embeddings/
@@ -19,7 +24,11 @@ embeddings/
 .venv/
 
 # ignore chapters
-bib/*/chapters/
+**/bib/*/chapters/
+
+# Compiled python — five .pyc files had been committed under scripts/syncing/
+__pycache__/
+*.pyc
 
 .secrets
 *.out
