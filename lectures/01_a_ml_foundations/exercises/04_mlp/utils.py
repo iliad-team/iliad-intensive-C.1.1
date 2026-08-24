@@ -90,6 +90,20 @@ def test_residual_mlp(ResidualMLPClass, d_model=64, d_mlp=256, n_layers=3):
         print("FAIL (output equals input; are you applying the MLP layers?)")
         return
 
+    # ERRATA 2026-08-24: compare against the reference stack. The checks above are
+    # satisfied both by dropping the residual connections and by applying only the
+    # first layer, because neither changes the shape or leaves the input untouched.
+    layers = getattr(model, "layers", None)
+    if layers is not None:
+        with torch.no_grad():
+            expected = x
+            for layer in layers:
+                expected = expected + layer(expected)
+        if not torch.allclose(out, expected, atol=1e-4):
+            print(f"FAIL (expected x + layer(x) through every layer; "
+                  f"max diff {(out - expected).abs().max():.2e})")
+            return
+
     # Check gradient flows through all layers
     x2 = torch.randn(2, 10, d_model, requires_grad=True)
     out2 = model(x2)

@@ -39,3 +39,10 @@ experiments/**
 
 # Jupyter checkpoints
 .ipynb_checkpoints/
+
+# ERRATA 2026-08-24: the RLHF notebook (06_rlhf) writes SFT/GRPO checkpoints next
+# to itself - 4.2 GB of untracked files after one local run. Harmless on Colab,
+# but the notebook runs locally too.
+lectures/*/exercises/*/sft/
+lectures/*/exercises/*/sft_model/
+lectures/*/exercises/*/grpo/

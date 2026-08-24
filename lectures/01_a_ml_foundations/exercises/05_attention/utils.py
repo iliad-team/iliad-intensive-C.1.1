@@ -53,7 +53,11 @@ def test_causal_mask(mask_fn):
         [0., 0., 0., -1e5],
         [0., 0., 0., 0.],
     ])
-    if torch.allclose(masked[0, 0], expected_mask, atol=1):
+    # ERRATA 2026-08-24: also accept -inf. The markdown above the exercise defines
+    # the mask as -inf; a student who follows the maths was being failed.
+    got = masked[0, 0]
+    finite = torch.where(torch.isneginf(got), torch.full_like(got, -1e5), got)
+    if torch.allclose(finite, expected_mask, atol=1):
         print("PASS")
     else:
         print(f"FAIL\nExpected:\n{expected_mask}\nGot:\n{masked[0, 0]}")
@@ -82,6 +86,15 @@ def test_attention_pattern(pattern_fn):
     upper = pattern[0].triu(diagonal=1)
     if upper.abs().max() > 1e-4:
         print(f"FAIL (non-zero values in upper triangle: max={upper.abs().max():.2e})")
+        return
+
+    # ERRATA 2026-08-24: compare against the reference. The checks above are all
+    # satisfied by a uniform-over-past pattern that never looks at Q or K.
+    scores = Q @ K.transpose(-2, -1) / math.sqrt(d_head)
+    m = torch.triu(torch.ones(pattern.shape[-2], pattern.shape[-1]), diagonal=1).bool()
+    expected = scores.masked_fill(m, -1e5).softmax(dim=-1)
+    if not torch.allclose(pattern, expected, atol=1e-4):
+        print(f"FAIL (values don't match: max diff {(pattern - expected).abs().max():.2e})")
         return
 
     print("PASS")

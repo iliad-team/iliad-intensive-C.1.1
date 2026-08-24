@@ -25,6 +25,18 @@ def test_residual_block(BlockClass):
         print("FAIL (output identical to input, F(x) seems to be zero)")
         return
 
+    # ERRATA 2026-08-24: check the output really is net(x) + x. The checks above
+    # are all satisfied by `return 2 * x`, which never calls self.net.
+    net = getattr(block, "net", None)
+    if net is None:
+        print("PASS")
+        return
+    with torch.no_grad():
+        expected = net(x) + x
+    if not torch.allclose(out, expected, atol=1e-4):
+        print(f"FAIL (expected self.net(x) + x; max diff {(out - expected).abs().max():.2e})")
+        return
+
     print("PASS")
 
 
